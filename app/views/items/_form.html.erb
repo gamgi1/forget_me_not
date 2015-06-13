@@ -18,17 +18,17 @@
     </div>
     <div class="checkbox">
       <label>
-        <%= f.check_box(:female, class: 'form-field input-sm') %>Femine item?
+        <%= f.check_box(:female) %>Femine item?
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <%= f.check_box(:required, class: 'form-field input-sm') %>Is it required for evey trip?
+        <%= f.check_box(:required) %>Is it required for evey trip?
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <%= f.check_box(:days_specific, class: 'form-field input-lg') %>Is it required daily?
+        <%= f.check_box(:days_specific) %>Is it required daily?
       </label>
     </div>
       <%= f.submit('Save', class: 'btn btn-info btn-lg') %>
