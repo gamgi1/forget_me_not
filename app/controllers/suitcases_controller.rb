@@ -1,15 +1,18 @@
 class SuitcasesController < ApplicationController
-  before_action :set_suitcase, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :set_user
+  before_action :set_suitcase, only: [:update, :destroy]
 
   # GET /suitcases
   # GET /suitcases.json
   def index
-    @suitcases = Suitcase.all
+    @suitcases = @user.suitcases
   end
 
   # GET /suitcases/1
   # GET /suitcases/1.json
   def show
+    @suitcase = @user.suitcases.find(params[:id])
     @items = Item.all
     @female_items = []
     @required_items = []
@@ -19,40 +22,33 @@ class SuitcasesController < ApplicationController
 
   # GET /suitcases/new
   def new
-    @suitcase = Suitcase.new
+    #@user = current_user.id
+    @suitcase = @user.suitcases.build
   end
 
   # GET /suitcases/1/edit
   def edit
+    @suitcase = @user.suitcases.find(params[:id])
   end
 
   # POST /suitcases
   # POST /suitcases.json
   def create
-    @suitcase = Suitcase.new(suitcase_params)
-
-    respond_to do |format|
-      if @suitcase.save
-        format.html { redirect_to @suitcase, notice: 'Suitcase was successfully created.' }
-        format.json { render :show, status: :created, location: @suitcase }
-      else
-        format.html { render :new }
-        format.json { render json: @suitcase.errors, status: :unprocessable_entity }
-      end
+    @suitcase = @user.suitcases.build(suitcase_params)
+    if @suitcase.save
+      redirect_to user_suitcases_path(@user.id)
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /suitcases/1
   # PATCH/PUT /suitcases/1.json
   def update
-    respond_to do |format|
-      if @suitcase.update(suitcase_params)
-        format.html { redirect_to @suitcase, notice: 'Suitcase was successfully updated.' }
-        format.json { render :show, status: :ok, location: @suitcase }
-      else
-        format.html { render :edit }
-        format.json { render json: @suitcase.errors, status: :unprocessable_entity }
-      end
+    if @suitcase.update_attributes(suitcase_params)
+      redirect_to user_suitcases_path(@user.id)
+    else
+      render :edit
     end
   end
 
@@ -61,12 +57,14 @@ class SuitcasesController < ApplicationController
   def destroy
     @suitcase.destroy
     respond_to do |format|
-      format.html { redirect_to suitcases_url, notice: 'Suitcase was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to user_suitcases_path(@user.id)
     end
   end
 
   private
+    def set_user
+      @user = current_user
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_suitcase
       @suitcase = Suitcase.find(params[:id])

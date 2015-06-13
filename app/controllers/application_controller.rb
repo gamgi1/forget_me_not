@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.where(id: session[:user_id]).first
   end
   helper_method :current_user
+  def authenticate_user
+    unless session[:user_id].present? && current_user.present?
+      flash[:alert] = 'You cannot access this page'
+      redirect_to root_path
+    end
+  end
 end

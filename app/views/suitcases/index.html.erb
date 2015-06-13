@@ -13,8 +13,8 @@
   <tbody>
     <% @suitcases.each do |suitcase| %>
       <tr>
-        <td><%= link_to "View Packing List #{suitcase.name}", suitcase %>&nbsp;</td>
-        <td><%= link_to 'Destroy', suitcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "View Packing List #{suitcase.name}", user_suitcase_path(@user.id, suitcase.id) %>&nbsp;</td>
+        <td><%= link_to 'Destroy', user_suitcase_path(@user.id, suitcase.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Suitcase', new_suitcase_path %>
+<%= link_to 'New Suitcase', new_user_suitcase_path(@user.id) %>

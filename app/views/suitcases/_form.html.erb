@@ -1,4 +1,4 @@
-<%= form_for(@suitcase) do |f| %>
+<%= form_for @suitcase, url: user_suitcase_path(@user.id, @suitcase.id) do |f| %>
   <% if @suitcase.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@suitcase.errors.count, "error") %> prohibited this suitcase from being saved:</h2>

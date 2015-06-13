@@ -1,6 +1,34 @@
 <h1>Editing Suitcase</h1>
 
-<%= render 'form' %>
+<%= form_for @suitcase, url: user_suitcase_path(@user.id, @suitcase.id) do |f| %>
+  <% if @suitcase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@suitcase.errors.count, "error") %> prohibited this suitcase from being saved:</h2>
+
+      <ul>
+      <% @suitcase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field(:name, class: 'form-control') %>
+  </div>
+  <div class="field">
+    <%= f.label :days %><br>
+    <%= f.number_field(:days, class: 'form-control') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gender %><br>
+    <%= f.select(:gender, options_for_select(['Male','Female']), {}, class: "form-control") %>
+  </div>
+  <div class="actions">
+    <%= f.submit('Save', class: 'btn btn-info btn-md') %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @suitcase %> |
 <%= link_to 'Back', suitcases_path %>
