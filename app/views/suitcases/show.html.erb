@@ -1,54 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="suitcase">
+    <div class="text-center">
+      <h1 class="page-header text-center"><%= @suitcase.name.upcase %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @suitcase.name %>
-</p>
+      <% @items.each do |i| %>
+        <% if i.female? %>
+        <% @female_items.push(i) %>
+        <% elsif i.required? %>
+        <% @required_items.push(i) %>
+        <% elsif i.days_specific? %>
+        <% @days_specific_items.push(i) %>
+        <% else %>
+        <% @optional_items.push(i) %>
+        <% end %>
+      <% end %>
 
-<p>
-  <strong>Days:</strong>
-  <%= @suitcase.days %>
-</p>
+      <div class="btn-group" data-toggle="buttons">
+        <% if @suitcase.gender == 'Female' %>
+          <% @female_items.each do |fi| %>
+          <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off"><%= fi.name %>
+          </label>
+          <br>
+          <% end %>
+        <% end %>
+        <% @required_items.each do |ri| %>
+          <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off"><%= ri.name %>
+          </label>
+          <br>
+        <% end %>
+        <% @days_specific_items.each do |dsi| %>
+          <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off"><%= @suitcase.days %>  <%= dsi.name %>s
+          </label>
+          <br>
+        <% end %>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @suitcase.gender %>
-</p>
+        <br>
+        <h3>Optional Items:</h3>
+        <br>
+        <% @optional_items.each do |oi| %>
+          <label class="btn btn-primary">
+            <input type="checkbox" autocomplete="off"><%= oi.name %>
+          </label>
+          <br>
+        <% end %>
+      </div>
 
-<% @items.each do |i| %>
-  <% if i.female? %>
-  <% @female_items.push(i) %>
-  <% elsif i.required? %>
-  <% @required_items.push(i) %>
-  <% elsif i.days_specific? %>
-  <% @days_specific_items.push(i) %>
-  <% else %>
-  <% @optional_items.push(i) %>
-  <% end %>
-<% end %>
+      <br>
 
-<% if @suitcase.gender == 'Female' %>
-  <% @female_items.each do |fi| %>
-    <%= fi.name %>
-    <br>
-  <% end %>
-<% end %>
-<% @required_items.each do |ri| %>
-  <%= ri.name %>
-  <br>
-<% end %>
-<% @days_specific_items.each do |dsi| %>
-  <%= @suitcase.days %>  <%= dsi.name %>s
-  <br>
-<% end %>
-
-<br>
-Optional Items:
-<br>
-<% @optional_items.each do |oi| %>
-  <%= oi.name %>
-  <br>
-<% end %>
-
-<%= link_to 'Edit', edit_suitcase_path(@suitcase) %> |
-<%= link_to 'Back', suitcases_path %>
+      <%= link_to 'Edit', edit_suitcase_path(@suitcase) %> |
+      <%= link_to 'Back', suitcases_path %>
+    </div>
+</div>

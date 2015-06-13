@@ -1,2 +1,39 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+html {
+  height: 100%;
+}
+body {
+  background: -webkit-linear-gradient(#FFFFD4, #A3FFC2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#FFFFD4, #A3FFC2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#FFFFD4, #A3FFC2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#FFFFD4, #A3FFC2); /* Standard syntax */
+  background-repeat: no-repeat;
+  height: 100%;
+}
+h1{
+  padding-top: 0px;
+  margin-top: 0px;
+}
+.container{
+  background-color: white;
+}
+
+.btn-primary,
+.btn-primary:hover {
+  background-color: #84CF9E;
+  border-color: #A3FFC2;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  color: #CBCDCD;
+  background-color: white;
+  border-color: #CBCDCD;
+}
+
+.suitcase{
+  background-size: cover;
+  background-image: image-url('suitcase.jpg');
+}
