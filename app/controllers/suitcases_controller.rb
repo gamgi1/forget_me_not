@@ -10,6 +10,11 @@ class SuitcasesController < ApplicationController
   # GET /suitcases/1
   # GET /suitcases/1.json
   def show
+    @items = Item.all
+    @female_items = []
+    @required_items = []
+    @days_specific_items = []
+    @optional_items = []
   end
 
   # GET /suitcases/new
