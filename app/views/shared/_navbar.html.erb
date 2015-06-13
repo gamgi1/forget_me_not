@@ -1,3 +1,6 @@
+<% if user_signed_in? %>
+  <% @user = current_user %>
+<% end %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -11,10 +14,11 @@
       <a class="navbar-brand" href="<%= root_path %>">Forget Me Not</a>
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <% if current_user.present? %>
+        <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="<%= new_suitcase_path %>">New Suitcase <span class="sr-only"></span></a></li>
-            <li class="active"><a href="<%= suitcases_path %>">Suitcases <span class="sr-only"></span></a></li>
+            <li class="active"><a href="<%= new_user_suitcase_path(@user.id) %>">New Suitcase <span class="sr-only"></span></a></li>
+            <li class="active"><a href="<%= user_suitcases_path(@user.id) %>">Suitcases <span class="sr-only"></span></a></li>
+            <li><a href="<%= logout_path %>">Logout</a></li>
           </ul>
         <% else %>
           <ul class="nav navbar-nav navbar-right">
@@ -24,7 +28,6 @@
                 <li><a href="<%= signup_path %>">Sign Up!</a></li>
                 <li><a href="<%= login_path %>">Login</a></li>
                 <li class="divider"></li>
-                <li><a href="<%= logout_path %>">Logout</a></li>
               </ul>
             </li>
           </ul>
