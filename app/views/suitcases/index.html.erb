@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Suitcases</h1>
+<h1>Suitcases</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Days</th>
-      <th>Gender</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +13,7 @@
   <tbody>
     <% @suitcases.each do |suitcase| %>
       <tr>
-        <td><%= suitcase.name %></td>
-        <td><%= suitcase.days %></td>
-        <td><%= suitcase.gender %></td>
-        <td><%= link_to 'Show', suitcase %></td>
-        <td><%= link_to 'Edit', edit_suitcase_path(suitcase) %></td>
+        <td><%= link_to "View Packing List #{suitcase.name}", suitcase %>&nbsp;</td>
         <td><%= link_to 'Destroy', suitcase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
