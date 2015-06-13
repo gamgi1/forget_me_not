@@ -15,5 +15,40 @@
   <%= @suitcase.gender %>
 </p>
 
+<% @items.each do |i| %>
+  <% if i.female? %>
+  <% @female_items.push(i) %>
+  <% elsif i.required? %>
+  <% @required_items.push(i) %>
+  <% elsif i.days_specific? %>
+  <% @days_specific_items.push(i) %>
+  <% else %>
+  <% @optional_items.push(i) %>
+  <% end %>
+<% end %>
+
+<% if @suitcase.gender == 'Female' %>
+  <% @female_items.each do |fi| %>
+    <%= fi.name %>
+    <br>
+  <% end %>
+<% end %>
+<% @required_items.each do |ri| %>
+  <%= ri.name %>
+  <br>
+<% end %>
+<% @days_specific_items.each do |dsi| %>
+  <%= @suitcase.days %>  <%= dsi.name %>s
+  <br>
+<% end %>
+
+<br>
+Optional Items:
+<br>
+<% @optional_items.each do |oi| %>
+  <%= oi.name %>
+  <br>
+<% end %>
+
 <%= link_to 'Edit', edit_suitcase_path(@suitcase) %> |
 <%= link_to 'Back', suitcases_path %>
