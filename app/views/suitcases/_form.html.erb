@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field(:name, class: 'form-control') %>
   </div>
   <div class="field">
     <%= f.label :days %><br>
-    <%= f.number_field :days %>
+    <%= f.number_field(:days, class: 'form-control') %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :gender %><br>
-    <%= f.select(:gender, options_for_select(['Male','Female'])) %>
+    <%= f.select(:gender, options_for_select(['Male','Female']), {}, class: "form-control") %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit('Save', class: 'btn btn-info btn-md') %>
   </div>
 <% end %>

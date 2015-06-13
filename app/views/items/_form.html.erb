@@ -1,33 +1,36 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<div class="col-xs-">
+  <%= form_for(@item) do |f| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-      <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label(:name, 'Name', class: 'form-label') %><br>
+      <%= f.text_field(:name, class: 'form-field input-lg') %>
     </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box(:female) %>Femine item?
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box(:required) %>Is it required for every trip?
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box(:days_specific) %>Is it required daily?
+      </label>
+    </div>
+      <%= f.submit('Save', class: 'btn btn-info btn-md') %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :female %><br>
-    <%= f.check_box :female %>
-  </div>
-  <div class="field">
-    <%= f.label :required %><br>
-    <%= f.check_box :required %>
-  </div>
-  <div class="field">
-    <%= f.label :days_specific %><br>
-    <%= f.check_box :days_specific %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

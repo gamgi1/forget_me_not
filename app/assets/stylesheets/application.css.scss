@@ -42,3 +42,28 @@ h1{
   background-size: cover;
   background-image: image-url('suitcase.jpg');
 }
+
+.suitcase label{
+  font-size: large;
+  font-weight: bold;
+}
+
+.checkbox{
+  position: relative;
+  margin-left: 0px;
+  margin-right: 10px;
+  font-size: large;
+}
+
+.checkbox label{
+  font-size: large;
+}
+
+.td{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form-group label {
+  font-size: x-large;
+}
