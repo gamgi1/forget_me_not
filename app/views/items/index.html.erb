@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<h1>My Closet</h1>
 <table class="content">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Item Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,13 +13,9 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button type="button" class="btn btn-warning btn-sm glyphicon glyphicon-edit"><%= link_to ' ', edit_item_path(item) %></td>
+        <td><button type="button" class="btn btn-danger btn-sm glyphicon glyphicon-trash"><%= link_to ' ', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>

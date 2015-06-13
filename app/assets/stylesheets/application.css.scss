@@ -39,13 +39,17 @@ h1{
 }
 
 .suitcase{
-  background-size: cover;
+  background-size: contain;
   background-image: image-url('suitcase.jpg');
 }
 
 .suitcase label{
   font-size: large;
   font-weight: bold;
+}
+
+.btn {
+  display: block;
 }
 
 .checkbox{

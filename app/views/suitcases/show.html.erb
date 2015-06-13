@@ -14,40 +14,43 @@
         <% end %>
       <% end %>
 
-      <div class="btn-group" data-toggle="buttons">
-        <% if @suitcase.gender == 'Female' %>
-          <% @female_items.each do |fi| %>
-          <label class="btn btn-primary">
-            <input type="checkbox" autocomplete="off"><%= fi.name %>
-          </label>
-          <br>
-          <% end %>
-        <% end %>
-        <% @required_items.each do |ri| %>
-          <label class="btn btn-primary">
-            <input type="checkbox" autocomplete="off"><%= ri.name %>
-          </label>
-          <br>
-        <% end %>
-        <% @days_specific_items.each do |dsi| %>
-          <label class="btn btn-primary">
-            <input type="checkbox" autocomplete="off"><%= @suitcase.days %>  <%= dsi.name %>s
-          </label>
-          <br>
-        <% end %>
-
-        <br>
-        <h3>Optional Items:</h3>
-        <br>
-        <% @optional_items.each do |oi| %>
-          <label class="btn btn-primary">
-            <input type="checkbox" autocomplete="off"><%= oi.name %>
-          </label>
-          <br>
-        <% end %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="btn-group" data-toggle="buttons">
+            <% if @suitcase.gender == 'Female' %>
+              <% @female_items.each do |fi| %>
+              <label class="btn btn-primary">
+                <input type="checkbox" autocomplete="off"><%= fi.name %>
+              </label>
+              <% end %>
+            <% end %>
+            <% @required_items.each do |ri| %>
+              <label class="btn btn-primary">
+                <input type="checkbox" autocomplete="off"><%= ri.name %>
+              </label>
+            <% end %>
+            <% @days_specific_items.each do |dsi| %>
+              <label class="btn btn-primary">
+                <input type="checkbox" autocomplete="off"><%= @suitcase.days %>  <%= dsi.name %>s
+              </label>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <br>
+      <div class="row">
+        <div class="col-xs-12">
+        <h3 class="text-center">Optional Items:</h3>
+          <div class="btn-group" data-toggle="buttons">
+          <% @optional_items.each do |oi| %>
+            <label class="btn btn-primary">
+              <input type="checkbox" autocomplete="off"><%= oi.name %>
+            </label>
+          <% end %>
+          </div>
+        </div>
+      </div>
+
 
       <%= link_to 'Edit', edit_suitcase_path(@suitcase) %> |
       <%= link_to 'Back', suitcases_path %>
