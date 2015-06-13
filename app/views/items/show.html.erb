@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Female:</strong>
+  <%= @item.female %>
+</p>
+
+<p>
+  <strong>Required:</strong>
+  <%= @item.required %>
+</p>
+
+<p>
+  <strong>Days specific:</strong>
+  <%= @item.days_specific %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
